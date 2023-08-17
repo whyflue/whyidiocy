@@ -1,0 +1,15 @@
+.home{
+    background-color: #151515;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .container{
+        border: 1px solid #fff;
+        border-radius: 10px;
+        width: 90%;
+        height: 85%;
+        display: flex;
+    }
+}

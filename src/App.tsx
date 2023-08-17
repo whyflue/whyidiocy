@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import { Register } from './pages/Register'
 import { Login } from './pages/Login'
 import { Home } from './pages/Home'
+import "./styles/App.css"
 
 export const App = () => {
   return (
