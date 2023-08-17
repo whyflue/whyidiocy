@@ -1,8 +1,8 @@
 import React from 'react'
-import "./Register.scss"
+import "../styles/Register.scss"
 import Add from "../img/ImagePlus.svg"
 
-const Register = () => {
+export const Register = () => {
   return (
     <div className="formContainer">
         <div className="formWrapper">
@@ -24,5 +24,3 @@ const Register = () => {
     </div>
   )
 }
-
-export default Register
