@@ -48,13 +48,13 @@
 
                 .logOutIcon{
                     filter: invert(87%) sepia(0%) saturate(0%) hue-rotate(217deg) brightness(90%) contrast(86%);
-                    width: 24px;
-                    height: 24px;
+                    width: 19px;
+                    height: 19px;
                     &:hover {
                         filter: invert(32%) sepia(16%) saturate(5395%) hue-rotate(331deg) brightness(86%) contrast(91%);
-                        -webkit-transition: filter 300ms linear;
-                        -ms-transition: filter 300ms linear;
-                        transition: filter 300ms linear;
+                        -webkit-transition: filter 200ms linear;
+                        -ms-transition: filter 200ms linear;
+                        transition: filter 200ms linear;
                     }
                 }
             }

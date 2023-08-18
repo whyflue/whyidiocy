@@ -1,3 +1,63 @@
 .chat{
+    font-family: 'Rubik', sans-serif;
     flex: 2;
+    //background-color: #272727;
+    
+    .chatInfo{
+        display: flex;
+        align-items: center;
+        background-color: #272727;
+        margin: 10px;
+        height: 50px;
+        padding: 10px;
+        justify-content: space-between;
+        color: #fff;
+        border-radius: 10px;
+
+        span{
+            font-size: 20px;
+            margin-left: 10px;
+        }
+        
+        .chatIcons{
+            img{
+                margin: 5px;
+                width: 24px;
+                height: 24px;
+                cursor: pointer;
+            }
+        }
+        
+    }
+
+    .messages{
+        margin: 10px;
+        border-radius: 10px;
+        background-color: #a14848;
+        height: calc(100% - (70px + 20px + 20px + 60px));
+        color: #fff;
+
+    }
+
+    .input{
+        background-color: #272727;
+        margin: 10px;
+        border-radius: 10px;
+        height: 40px;
+        padding: 10px;
+
+        .attach{
+            width: 32px;
+            height: 32px;
+        }
+        .send{
+            width: 28px;
+            height: 28px;
+
+            img{
+                width: 24px;
+                height: 24px;
+            }
+        }
+    }
 }
