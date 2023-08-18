@@ -34,12 +34,29 @@
                 overflow: hidden;
             }
             button{
-                background-color: #272727;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: transparent;
+                //width: 32px;
+                //height: 32px;
                 border: none;
                 border-radius: 5px;
                 color: #fff;
                 padding: 10px;
                 cursor: pointer;
+
+                .logOutIcon{
+                    filter: invert(87%) sepia(0%) saturate(0%) hue-rotate(217deg) brightness(90%) contrast(86%);
+                    width: 24px;
+                    height: 24px;
+                    &:hover {
+                        filter: invert(32%) sepia(16%) saturate(5395%) hue-rotate(331deg) brightness(86%) contrast(91%);
+                        -webkit-transition: filter 300ms linear;
+                        -ms-transition: filter 300ms linear;
+                        transition: filter 300ms linear;
+                    }
+                }
             }
         }   
     }
@@ -49,12 +66,17 @@
         .searchForm{
 
             font-weight: 400;
-            font-size: 16px;
+            font-size: 18px;
+
+            padding: 10px;
+            background-color: #151515;
+            border-radius: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
 
             input{
                 font-size: 16px;
                 margin-left: 10px;
-                padding: 5px;
                 background-color: transparent;
                 border: none;
                 color: #fff;
@@ -64,30 +86,42 @@
                 color: #BEBEBE;
             }
         }
-        .userChat{
+    }
+    .userChat{
 
-            font-weight: 400;
-            font-size: 16px;
+        font-weight: 400;
+        font-size: 16px;
 
-            padding: 10px;
-            margin: 10px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #fff;
-            cursor: pointer;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #fff;
+        cursor: pointer;
 
-            &:hover{
-                background-color: #1C1C1C;
+        &:hover{
+            background-color: #1C1C1C;
+        }
+
+        img{
+            width: 50px;
+            height: 50px;
+            -webkit-border-radius: 35%;
+            -moz-border-radius: 35%;
+            border-radius: 35%;
+        }
+        
+        .userChatInfo{
+            span{
+                font-weight: 400;
+                font-size: 18px;
             }
-
-            img{
-                width: 50px;
-                height: 50px;
-                -webkit-border-radius: 35%;
-                -moz-border-radius: 35%;
-                border-radius: 35%;
+            p{
+                font-weight: 300;
+                font-size: 16px;
+                color: #BEBEBE;
             }
         }
     }
