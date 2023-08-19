@@ -8,8 +8,8 @@ export const Message = () => {
         <span>1 sec ago</span>
       </div>
       <div className="messageContent">
-        <p>Choy kawo</p>
-        <img src="https://sun1-24.userapi.com/impg/yXt2ui32V7Oidd-r0lYiu1sqgnxQ-BOFl08hBw/Zjncp6EXli4.jpg?size=736x736&quality=96&sign=6f23cf02cf1afe524e15e2ec0567cccf&type=album" alt="" />
+        <p>some text</p>
+        <img src="https://sun9-13.userapi.com/impg/WNuVDU2AUvMCvE2p88RHxoyWGa-9pSZysMPBcg/QhOE-s1JxIk.jpg?size=1038x1038&quality=95&sign=3b90d57b2214009833280c42aa2e5226&type=album" alt="" />
       </div>
     </div>
   )

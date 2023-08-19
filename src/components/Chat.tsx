@@ -11,7 +11,7 @@ export const Chat = () => {
   return (
     <div className='chat'>
       <div className="chatInfo">
-        <span>User</span>
+        <span>stephan</span>
         <div className="chatIcons">
           <img src={AddFriendIcon} alt="" />
           <img src={CallIcon} alt="" />

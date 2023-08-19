@@ -12,13 +12,14 @@
     @media screen and (max-width:1200px) {
         @content
     }
-}
+};
 
 .sidebar{
     font-family: 'Rubik', sans-serif;
     flex: 1;
     border-right: 1px solid #fff;
     background-color: #272727;
+    position: relative;
     .navbar{
         display: flex;
         align-items: center;
@@ -57,13 +58,16 @@
                 justify-content: center;
                 align-items: center;
                 background-color: transparent;
-                //width: 32px;
-                //height: 32px;
                 border: none;
                 border-radius: 5px;
                 color: #fff;
                 padding: 10px;
                 cursor: pointer;
+
+                @include tablet {
+                    position: absolute;
+                    bottom: 10px;
+                }
 
                 .logOutIcon{
                     filter: invert(87%) sepia(0%) saturate(0%) hue-rotate(217deg) brightness(90%) contrast(86%);
@@ -120,6 +124,7 @@
         color: #fff;
         cursor: pointer;
 
+
         &:hover{
             background-color: #1C1C1C;
         }
@@ -133,6 +138,10 @@
         }
         
         .userChatInfo{
+            @include tablet {
+                display: none;
+            }
+
             span{
                 font-weight: 400;
                 font-size: 18px;
