@@ -10,6 +10,7 @@ import { useNavigate, Link } from "react-router-dom";
 export const Register = () => {
 
   const [err, setErr] = useState(false);
+  const navigate = useNavigate();
   
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -37,7 +38,11 @@ export const Register = () => {
               displayName,
               email,
               photoUrl: downloadURL
-            })
+            });
+
+            await setDoc(doc(db, "userChats", res.user.uid), {});
+            navigate("/")
+
           });
         }
       );
