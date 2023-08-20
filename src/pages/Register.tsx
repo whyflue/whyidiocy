@@ -1,26 +1,52 @@
 import React, {useState} from 'react'
 import "../styles/Register.scss"
 import Add from "../img/ImagePlus.svg"
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase"
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth, storage, db } from "../firebase"
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore"; 
+import { useNavigate, Link } from "react-router-dom";
 
 export const Register = () => {
-  
-  const [err, setErr] = useState<boolean | Error>(false);
+
+  const [err, setErr] = useState(false);
   
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const displayName = e.target[0].value;
-    const email = e.target[1].value;
-    const password = e.target[2].value;
-    const file = e.target[3].files[0];
+    const displayName = e.target[0].value
+    const email = e.target[1].value
+    const password = e.target[2].value
+    const file = e.target[3].files[0]
 
-    try { 
+    try{
       const res = await createUserWithEmailAndPassword(auth, email, password)
-    }catch(err){
-      setErr(true);
-    }
+      const storageRef = ref(storage, displayName);
 
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      // Register three observers
+      uploadTask.on('state_changed', 
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then( async (downloadURL) => {
+            await updateProfile(res.user, {
+              displayName,
+              photoURL:downloadURL
+            });
+            await setDoc(doc(db, "users", res.user.uid), {
+              uid: res.user.uid,
+              displayName,
+              email,
+              photoUrl: downloadURL
+            })
+          });
+        }
+      );
+
+      
+    }catch(err){
+      setErr(true)
+    }
+    
   }
 
   return (
@@ -35,7 +61,7 @@ export const Register = () => {
                 <input style={{display:"none"}} type="file" id="file"/>
                 <label htmlFor='file'>
                   <img src={Add} alt=""/>
-                  <span>Add an avatar</span>
+                  <span>Add profile picture</span>
                 </label>
                 <button>Sign Up!</button>
                 {err && <span>Smth went wrong</span>}

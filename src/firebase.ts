@@ -1,19 +1,25 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// Import the functions you need from the SDKs you need
 const firebaseConfig = {
-  apiKey: "AIzaSyBkrUP6BiIjJislV-KHjCib3AsUC9iICVY",
-  authDomain: "whysocium.firebaseapp.com",
-  projectId: "whysocium",
-  storageBucket: "whysocium.appspot.com",
-  messagingSenderId: "865342490148",
-  appId: "1:865342490148:web:ef512dd100db9d83bcfab1"
+  apiKey: "AIzaSyBdVTPUeG56dKgINIajw3Y_y_FgIW29vZM",
+  authDomain: "whysocium-alfa.firebaseapp.com",
+  projectId: "whysocium-alfa",
+  storageBucket: "whysocium-alfa.appspot.com",
+  messagingSenderId: "17729361415",
+  appId: "1:17729361415:web:8ff11368ee7fbe56d5bca2"
 };
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth()
+export const storage = getStorage();
+export const db = getFirestore();
