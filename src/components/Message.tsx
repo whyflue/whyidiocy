@@ -1,17 +1,38 @@
-import React from 'react'
+import React, { useContext, useEffect, useRef } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { ChatContext } from "../context/ChatContext";
 
-export const Message = () => {
+export const Message = ({ message }) => {
+  const { currentUser } = useContext(AuthContext);
+  const { data } = useContext(ChatContext);
+
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  }, [message]);
+
   return (
-    <div className='message owner'>
+    <div
+      ref={ref}
+      className={`message ${message.senderId === currentUser.uid && "owner"}`}
+    >
       <div className="messageInfo">
-        <img src="https://sun1-84.userapi.com/impg/L7owHViafG7qgzwh-hUKgC2thaNIdRM1kxktPA/Tc5DeLwNiks.jpg?size=1280x960&quality=96&sign=e6cb003694e93f14a8c33c4d28097403&type=album" alt="" />
-        <span>1 sec ago</span>
+        <img
+          src={
+            message.senderId === currentUser.uid
+              ? currentUser.photoURL
+              : data.user.photoURL
+          }
+          alt=""
+        />
+        <span>just now</span>
       </div>
       <div className="messageContent">
-        <p>some text</p>
-        <img src="https://sun9-13.userapi.com/impg/WNuVDU2AUvMCvE2p88RHxoyWGa-9pSZysMPBcg/QhOE-s1JxIk.jpg?size=1038x1038&quality=95&sign=3b90d57b2214009833280c42aa2e5226&type=album" alt="" />
+        <p>{message.text}</p>
+        {message.img && <img src={message.img} alt="" />}
       </div>
     </div>
-  )
-}
+  );
+};
 
