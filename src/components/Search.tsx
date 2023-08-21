@@ -1,17 +1,67 @@
 import React from 'react'
+import { useState, useContext } from 'react'
+import { db } from '../firebase'
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  setDoc,
+  doc,
+  updateDoc,
+  serverTimestamp,
+  getDoc,
+} from "firebase/firestore";
+
 
 const Search = () => {
+
+  const [username, setUsername] = useState("")
+  const [user, setUser] = useState(null)
+  const [err, setErr] = useState(false)
+
+  const handleSearch = async () => {
+    const q = query(
+      collection(db, "users"),
+      where("displayName", "==", username)
+    );
+
+    try {
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        setUser(doc.data());
+      });
+    } catch (err) {
+      setErr(true);
+    }
+  };
+
+  const handleKey = (e) => {
+    e.code === "Enter" && handleSearch();
+  };
+  
+ 
+
+  
+
   return (
     <div className='search'>
       <div className="searchForm">
-        <input type="text" placeholder='Find chat'/>
+      <input
+          type="text"
+          placeholder="Find a user"
+          onKeyDown={handleKey}
+          onChange={(e) => setUsername(e.target.value)}
+          value={username}
+        />
       </div>
-      <div className="userChat">
-        <img src="https://sun9-36.userapi.com/impg/1B2Zo22g9bTI3c2BM_qm9YtQleiIdvXq0f_JnQ/4QX7K3-T3Ao.jpg?size=736x736&quality=95&sign=f95d5d4e4f381224d500f4ff3235e05d&type=album" alt="" />
+      {err && <span>Smth went wrong</span>}
+      {user && <div className="userChat">
+        <img src={user.photoUrl} alt="" />
         <div className="userChatInfo">
-          <span>User0</span>
+          <span>{user.displayName}</span>
         </div>
-      </div>
+      </div>}
     </div>
   )
 }
